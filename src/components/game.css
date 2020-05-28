@@ -1,0 +1,27 @@
+.btn_odds button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: none;
+    box-shadow: 1px 1px #eee;
+}
+
+.btn_odds button:hover,
+.btn_odds button:active {
+    background-color: #87eda2;
+}
+
+.game-id {
+    text-align: center;
+}
+.game-date {
+    text-align: center;
+}
+.game-time {
+    text-align: center;
+}
+
+.game-name {
+    text-align: left;
+}
+
