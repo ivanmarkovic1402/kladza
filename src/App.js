@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './components/navbar';
-import Tiket from './components/tiket';
+import Container from './components/container';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -9,7 +9,7 @@ function App() {
   return (
     <React.Fragment>
       <Navbar />
-      <Tiket />
+      <Container />
     </React.Fragment>
   );
 }

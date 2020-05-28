@@ -12,9 +12,9 @@ class Lista extends Component {
              date: '15-06-2020',
              time: '20:45',
              odds: {
-                    home: '2.4',
-                    draw: '3',
-                    away: '1.95'
+                    home: 2.4,
+                    draw: 3,
+                    away: 1.95
                 }
             },
             {   id:2, 
@@ -22,9 +22,9 @@ class Lista extends Component {
                 date: '15-06-2020',
                 time: '20:45',
                 odds: {
-                    home: '2.4',
-                    draw: '3',
-                    away: '2'
+                    home: 2.4,
+                    draw: 3.1,
+                    away: 2
                 }
             },
             {   id:3, 
@@ -32,9 +32,9 @@ class Lista extends Component {
                 date: '15-06-2020',
                 time: '20:45',
                 odds: {
-                    home: '2.9',
-                    draw: '3',
-                    away: '1.75'
+                    home: 2.9,
+                    draw: 3,
+                    away: 1.75
                 }
             },
             {   id:4, 
@@ -42,9 +42,9 @@ class Lista extends Component {
                 date: '15-06-2020',
                 time: '20:45',
                 odds: {
-                    home: '1.7',
-                    draw: '3.4',
-                    away: '2.7'
+                    home: 1.7,
+                    draw: 3.4,
+                    away: 2.7
                 }
             },
             {   id:5, 
@@ -52,9 +52,9 @@ class Lista extends Component {
                 date: '16-06-2020',
                 time: '20:45',
                 odds: {
-                    home: '2.4',
-                    draw: '3',
-                    away: '1.80'
+                    home: 2.4,
+                    draw: 3,
+                    away: 1.80
                 }
             },
             {   id:6, 
@@ -62,9 +62,9 @@ class Lista extends Component {
                 date: '16-06-2020',
                 time: '20:45',
                 odds: {
-                    home: '2',
-                    draw: '3.1',
-                    away: '2.1'
+                    home: 2,
+                    draw: 3.1,
+                    away: 2.1
                 }
             },
             {   id:7, 
@@ -72,9 +72,9 @@ class Lista extends Component {
                 date: '16-06-2020',
                 time: '20:45',
                 odds: {
-                    home: '2',
-                    draw: '3.4',
-                    away: '2.6'
+                    home: 2,
+                    draw: 3.4,
+                    away: 2.6
                 }
             },
             {   id:8, 
@@ -82,9 +82,9 @@ class Lista extends Component {
                 date: '16-06-2020',
                 time: '20:45',
                 odds: {
-                    home: '2.2',
-                    draw: '3.2',
-                    away: '2.4'
+                    home: 2.2,
+                    draw: 3.2,
+                    away: 2.4
                 }
             },
         ],
