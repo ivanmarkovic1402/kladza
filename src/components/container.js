@@ -4,22 +4,19 @@ import Tiket from './tiket';
 
 class Container extends Component {
     state = {
-        ticket_games: [
-            {  id: 1,
-               name: 'Mancester United vs Real Madrid',
-               play: 'draw',
-               odd: 3.1
-            },
-            {  id: 2,
-                name: 'Borusia Dortmund vs PSG',
-                play: 'away',
-                odd: 1.95
-            },
-        ]
+        ticket_games: []
     }
 
     handleAddOddToTicket= (game, play) =>{
-        console.log(game, play);
+        const ticket_games = [...this.state.ticket_games];
+        const games = {
+            id: game.id,
+            name: game.name,
+            play: play,
+            odd: game.odds[play]
+        }
+        ticket_games.push(games);
+        this.setState({ticket_games})
     }
 
     render() { 

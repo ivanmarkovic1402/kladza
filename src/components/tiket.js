@@ -3,20 +3,34 @@ import './tiket.css';
 
 
 class Ticket extends Component {
-    componentDidMount(){
+    componentWillMount(){
         this.updateGamesState();
     }
-    // componentDidUpdate(){
-    //     console.log(this.state.games);
 
-    // }
+    componentDidUpdate(prevProps, prevState){
+
+        if(prevProps.ticket_games !== this.props.ticket_games){
+            //Ajax call to server to get new data
+
+            let oddSummary = 1;
+            let oddsSummary = [];
+
+            oddsSummary.push(this.props.ticket_games.map(game => game.odd));
+            oddsSummary[0].map(el =>  oddSummary *= el);
+            oddSummary = oddSummary.toFixed(2);
+
+            this.setState({ games: this.props.ticket_games, oddSummary: oddSummary});
+        }
+    }
+
     state = { 
         games: [],
         oddSummary: 1
     }
 
     updateGamesState = () => {
-        let oddSummary = 1;
+
+        let oddSummary = null;
         let oddsSummary = [];
 
         oddsSummary.push(this.props.ticket_games.map(game => game.odd));
@@ -56,11 +70,3 @@ class Ticket extends Component {
 }
  
 export default Ticket;
-
-
-// const Tiket = (props) => {
-//     let oddSummary = 1;
-//     const oddSummaryFinal = props.ticket_games.map(g => {
-//         return oddSummary *= (+ g.odd)
-//     });
-

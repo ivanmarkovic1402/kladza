@@ -5,7 +5,7 @@ import Game from './game';
 import './lista.css';
 
 class Lista extends Component {
-    list = { 
+    state = { 
         games: [
             {id:1, 
              name: 'Borusia Dortmund vs PSG', 
@@ -15,7 +15,8 @@ class Lista extends Component {
                     home: 2.4,
                     draw: 3,
                     away: 1.95
-                }
+                },
+                isAdded: false
             },
             {   id:2, 
                 name: 'Mancester United vs Real Madrid',
@@ -25,7 +26,8 @@ class Lista extends Component {
                     home: 2.4,
                     draw: 3.1,
                     away: 2
-                }
+                },
+                isAdded: false
             },
             {   id:3, 
                 name: 'Monaco vs Barselona',
@@ -35,7 +37,8 @@ class Lista extends Component {
                     home: 2.9,
                     draw: 3,
                     away: 1.75
-                }
+                },
+                isAdded: false
             },
             {   id:4, 
                 name: 'Bayern Munchen vs Napoli',
@@ -45,7 +48,8 @@ class Lista extends Component {
                     home: 1.7,
                     draw: 3.4,
                     away: 2.7
-                }
+                },
+                isAdded: false
             },
             {   id:5, 
                 name: 'Red Star vs Liverpool',
@@ -55,7 +59,8 @@ class Lista extends Component {
                     home: 2.4,
                     draw: 3,
                     away: 1.80
-                }
+                },
+                isAdded: false
             },
             {   id:6, 
                 name: 'Juventus vs Manchester City',
@@ -65,7 +70,8 @@ class Lista extends Component {
                     home: 2,
                     draw: 3.1,
                     away: 2.1
-                }
+                },
+                isAdded: false
             },
             {   id:7, 
                 name: 'Ajax vs Benfica',
@@ -75,7 +81,8 @@ class Lista extends Component {
                     home: 2,
                     draw: 3.4,
                     away: 2.6
-                }
+                },
+                isAdded: false
             },
             {   id:8, 
                 name: 'Chelsea vs Inter',
@@ -85,12 +92,20 @@ class Lista extends Component {
                     home: 2.2,
                     draw: 3.2,
                     away: 2.4
-                }
+                },
+                isAdded: false
             },
         ],
      }
 
-    
+     handleGameClick = (gameId) => {
+        this.state.games.filter(g => {
+            if(g.id === gameId){
+                g.isAdded = !g.isAdded;
+            }
+        });
+        // this.setState({gamess});     //OVDE STAO     
+     }
     
     render() { 
         return ( 
@@ -108,7 +123,7 @@ class Lista extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.list.games.map(game => <Game key={game.id} onAddOddToTicket={this.props.onAddOddToTicket} game={game} />)}
+                        {this.state.games.map(game => <Game key={game.id} blockClickOnGame={this.handleGameClick} onAddOddToTicket={this.props.onAddOddToTicket} game={game} />)}
                     </tbody>
                 </table>
             </div>
