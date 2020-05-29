@@ -108,7 +108,7 @@ class Lista extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.list.games.map(game => <Game key={game.id} game={game} />)}
+                        {this.list.games.map(game => <Game key={game.id} onAddOddToTicket={this.props.onAddOddToTicket} game={game} />)}
                     </tbody>
                 </table>
             </div>

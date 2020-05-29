@@ -1,0 +1,9 @@
+.odds-summary {
+    border-top: 2px solid black;
+}
+table {
+    border: 1px solid black;
+}
+.ticket-title {
+    border-bottom: 1px solid black;
+}

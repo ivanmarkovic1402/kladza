@@ -17,12 +17,17 @@ class Container extends Component {
             },
         ]
     }
+
+    handleAddOddToTicket= (game, play) =>{
+        console.log(game, play);
+    }
+
     render() { 
         return ( 
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-8 col-md-8 col-sm-8">
-                        <Lista />
+                        <Lista onAddOddToTicket={this.handleAddOddToTicket} />
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4">
                         <Tiket ticket_games={this.state.ticket_games} />

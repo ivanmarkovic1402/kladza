@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './tiket.css';
 
 
 class Ticket extends Component {
@@ -15,15 +16,14 @@ class Ticket extends Component {
     }
 
     updateGamesState = () => {
-        let x = 1;
-        console.log(x);
-
+        let oddSummary = 1;
         let oddsSummary = [];
-        this.setState({ games: this.props.ticket_games})
 
         oddsSummary.push(this.props.ticket_games.map(game => game.odd));
-        oddsSummary.map(el =>  x *= el);
-        console.log(x);
+        oddsSummary[0].map(el =>  oddSummary *= el);
+
+        this.setState({ games: this.props.ticket_games, oddSummary: oddSummary});
+
     }
 
 
@@ -32,8 +32,8 @@ class Ticket extends Component {
         
         return ( 
             <div>
-                <div><h4>Ticket</h4></div>
-                <table className="table table-striped">
+                <div className="ticket-title"><h4>Ticket</h4></div>
+                <table className="table">
                     <thead>
                         <tr>
                             <th>Game</th>
@@ -43,8 +43,8 @@ class Ticket extends Component {
                     </thead>
                     <tbody>
                         {this.state.games.map(game => <tr key={game.id}><td>{game.name}</td><td>{game.play}</td><td>{game.odd}</td></tr>)}
-                        <tr>
-                            <td></td>
+                        <tr className="odds-summary">
+                            <td>Odds Summary</td>
                             <td></td>
                             <td className="float-right"><strong>{this.state.oddSummary}</strong></td>
                         </tr>
