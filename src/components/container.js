@@ -8,6 +8,7 @@ class Container extends Component {
     }
 
     makeGameVisible;
+    resetAll = false;
 
     handleAddOddToTicket= (game, play) =>{
         const ticket_games = [...this.state.ticket_games];
@@ -30,18 +31,24 @@ class Container extends Component {
         this.makeGameVisible = game_id;
     }
 
+    handleOnResetAll = () => {
+        this.resetAll = true;
+        this.setState({ ticket_games: []});
+    }
+
     render() { 
         return ( 
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-8 col-md-8 col-sm-8">
-                        <Lista onAddOddToTicket={this.handleAddOddToTicket} onToggleGameDisplay={this.makeGameVisible}/>
+                        <Lista onAddOddToTicket={this.handleAddOddToTicket} onResetAll={this.resetAll} onToggleGameDisplay={this.makeGameVisible}/>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4">
                         <Tiket 
                             ticket_games={this.state.ticket_games} 
                             onDeleteGame={this.handleOnDeleteGame} 
-                            onDeleteGameFromTicket={this.handleOnDeleteGameFromTicket}/>
+                            onDeleteGameFromTicket={this.handleOnDeleteGameFromTicket}
+                            onResetAll={this.handleOnResetAll} />
                     </div>
                 </div>
             </div>

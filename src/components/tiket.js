@@ -11,7 +11,7 @@ class Ticket extends Component {
 
         if(prevProps.ticket_games !== this.props.ticket_games){
             //Ajax call to server to get new data
-
+            
             let oddSummary = 1;
             let oddsSummary = [];
 
@@ -66,9 +66,15 @@ class Ticket extends Component {
         this.setState({total});
     }
 
+    // resetAll = () => {
+    //     const games = [];
+    //     const oddSummary = null;
+    //     const total = 0;
+    //     this.setState({games, oddSummary, total});
+    // }
+
 
     render() { 
-        
         return ( 
             <div>
                 <div className="ticket-title"><h4>Ticket</h4></div>
@@ -78,7 +84,7 @@ class Ticket extends Component {
                             <th>Game</th>
                             <th>Play</th>
                             <th>Odd</th>
-                            <th></th>
+                            <th><button onClick={() => this.props.onResetAll()} className="resetAll">&times;</button></th>
                         </tr>
                     </thead>
                     <tbody>

@@ -7,3 +7,15 @@ table {
 .ticket-title {
     border-bottom: 1px solid black;
 }
+.resetAll {
+    font-size: 30px;
+    font-weight: bold;
+    border: none;
+    color: red;
+    background-color: transparent;
+    float: right;
+
+}
+.resetAll button {
+    cursor: pointer;
+}

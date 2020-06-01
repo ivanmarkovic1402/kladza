@@ -113,11 +113,26 @@ class Lista extends Component {
         this.setState({ games });
      }
 
+     updateStateResetAll = () => {
+        const gamesNew = [...this.state.games];
+        this.state.games.filter(g => {
+                for(let i in gamesNew){
+                    gamesNew[i]['isAdded'] = false;
+                }
+        });
+        this.setState({games: gamesNew});
+     }
+
     componentDidUpdate(prevProps, prevState){
         if(prevProps.onToggleGameDisplay !== this.props.onToggleGameDisplay){
             this.handleGameClick(this.props.onToggleGameDisplay);
         }
+        if(prevProps.onResetAll !== this.props.onResetAll){
+            this.updateStateResetAll();
+        }
     }
+
+
     
     render() { 
         return ( 
@@ -139,6 +154,7 @@ class Lista extends Component {
                             <Game key={game.id} 
                                 blockClickOnGame={this.handleGameClick} 
                                 onAddOddToTicket={this.props.onAddOddToTicket}
+                                onResetAll={this.props.onResetAll}
                                 game={game} />)}
                     </tbody>
                 </table>
