@@ -99,13 +99,25 @@ class Lista extends Component {
      }
 
      handleGameClick = (gameId) => {
+        const games = [...this.state.games];
         this.state.games.filter(g => {
             if(g.id === gameId){
-                g.isAdded = !g.isAdded;
+                // g.isAdded = !g.isAdded;
+                for(let i in games){
+                    if(games[i]['id'] === gameId){
+                        games[i]['isAdded'] = !g.isAdded;
+                    }
+                }
             }
         });
-        // this.setState({gamess});     //OVDE STAO     
+        this.setState({ games });
      }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.onToggleGameDisplay !== this.props.onToggleGameDisplay){
+            this.handleGameClick(this.props.onToggleGameDisplay);
+        }
+    }
     
     render() { 
         return ( 
@@ -123,7 +135,11 @@ class Lista extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.games.map(game => <Game key={game.id} blockClickOnGame={this.handleGameClick} onAddOddToTicket={this.props.onAddOddToTicket} game={game} />)}
+                        {this.state.games.map(game => 
+                            <Game key={game.id} 
+                                blockClickOnGame={this.handleGameClick} 
+                                onAddOddToTicket={this.props.onAddOddToTicket}
+                                game={game} />)}
                     </tbody>
                 </table>
             </div>

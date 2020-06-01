@@ -7,6 +7,8 @@ class Container extends Component {
         ticket_games: []
     }
 
+    makeGameVisible;
+
     handleAddOddToTicket= (game, play) =>{
         const ticket_games = [...this.state.ticket_games];
         const games = {
@@ -16,7 +18,16 @@ class Container extends Component {
             odd: game.odds[play]
         }
         ticket_games.push(games);
-        this.setState({ticket_games})
+        this.setState({ticket_games});
+    }
+
+    handleOnDeleteGame = (gameId) => {
+        const newGames = this.state.ticket_games.filter(g => g.id !== gameId);
+        this.setState({ticket_games: newGames});
+    }
+
+    handleOnDeleteGameFromTicket = (game_id) =>{
+        this.makeGameVisible = game_id;
     }
 
     render() { 
@@ -24,10 +35,13 @@ class Container extends Component {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-8 col-md-8 col-sm-8">
-                        <Lista onAddOddToTicket={this.handleAddOddToTicket} />
+                        <Lista onAddOddToTicket={this.handleAddOddToTicket} onToggleGameDisplay={this.makeGameVisible}/>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4">
-                        <Tiket ticket_games={this.state.ticket_games} />
+                        <Tiket 
+                            ticket_games={this.state.ticket_games} 
+                            onDeleteGame={this.handleOnDeleteGame} 
+                            onDeleteGameFromTicket={this.handleOnDeleteGameFromTicket}/>
                     </div>
                 </div>
             </div>

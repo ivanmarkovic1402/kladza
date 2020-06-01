@@ -8,7 +8,9 @@ class Ticket extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-
+// console.log(prevState);
+// console.log(this.state);
+// console.log(this.state);
         if(prevProps.ticket_games !== this.props.ticket_games){
             //Ajax call to server to get new data
 
@@ -40,6 +42,18 @@ class Ticket extends Component {
 
     }
 
+    deleteGameFromTicket = (gameId) =>{
+        const newGames = this.state.games.filter(g => g.id !== gameId);
+
+        let oddSummary = 1;
+        let oddsSummary = [];
+
+        oddsSummary.push(newGames.map(game => game.odd));
+        oddsSummary[0].map(el =>  oddSummary *= el);
+        oddSummary = oddSummary.toFixed(2);
+
+        this.setState({ games: newGames, oddSummary: oddSummary});
+    }
 
 
     render() { 
@@ -56,7 +70,16 @@ class Ticket extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.games.map(game => <tr key={game.id}><td>{game.name}</td><td>{game.play}</td><td>{game.odd}</td></tr>)}
+                        {this.state.games.map(game => 
+                            <tr key={game.id}>
+                                <td>{game.name}</td>
+                                <td>{game.play}</td>
+                                <td>{game.odd}</td>
+                                <td><button onClick={() => {
+                                    this.deleteGameFromTicket(game.id); 
+                                    this.props.onDeleteGameFromTicket(game.id); 
+                                    this.props.onDeleteGame(game.id)}} className="close">&times;</button></td>
+                            </tr>)}
                         <tr className="odds-summary">
                             <td>Odds Summary</td>
                             <td></td>
