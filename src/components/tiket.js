@@ -8,9 +8,7 @@ class Ticket extends Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-// console.log(prevState);
-// console.log(this.state);
-// console.log(this.state);
+
         if(prevProps.ticket_games !== this.props.ticket_games){
             //Ajax call to server to get new data
 
@@ -21,13 +19,17 @@ class Ticket extends Component {
             oddsSummary[0].map(el =>  oddSummary *= el);
             oddSummary = oddSummary.toFixed(2);
 
-            this.setState({ games: this.props.ticket_games, oddSummary: oddSummary});
+            let bet = document.getElementById('bet').value; 
+            let total = (oddSummary*bet).toFixed(2);
+
+            this.setState({ games: this.props.ticket_games, oddSummary: oddSummary, total: total});
         }
     }
 
     state = { 
         games: [],
-        oddSummary: 1
+        oddSummary: null,
+        total: 0
     }
 
     updateGamesState = () => {
@@ -52,7 +54,16 @@ class Ticket extends Component {
         oddsSummary[0].map(el =>  oddSummary *= el);
         oddSummary = oddSummary.toFixed(2);
 
-        this.setState({ games: newGames, oddSummary: oddSummary});
+        let bet = document.getElementById('bet').value; 
+        let total = (oddSummary*bet).toFixed(2);
+
+        this.setState({ games: newGames, oddSummary: oddSummary, total: total});
+    }
+
+    placeBet = (e) => {
+        let bet = e.target.value;
+        let total = (bet*this.state.oddSummary).toFixed(2);
+        this.setState({total});
     }
 
 
@@ -67,6 +78,7 @@ class Ticket extends Component {
                             <th>Game</th>
                             <th>Play</th>
                             <th>Odd</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,7 +95,13 @@ class Ticket extends Component {
                         <tr className="odds-summary">
                             <td>Odds Summary</td>
                             <td></td>
+                            <td></td>
                             <td className="float-right"><strong>{this.state.oddSummary}</strong></td>
+                        </tr>
+                        <tr className="bet">
+                            <td>Bet</td>        
+                            <td colSpan="2"><input type="text" id="bet" name="bet" onChange={(event) => this.placeBet(event)} /></td>        
+                            <td className="float-right"><strong>{this.state.total}</strong></td>        
                         </tr>
                     </tbody>
                 </table>
