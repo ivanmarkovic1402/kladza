@@ -31,7 +31,8 @@ const Modal = props =>{
                         </tr>
                     )}
                     <tr><td style={{borderTop: "1px solid black"}}>Odds Summary</td><td colSpan="2" style={{borderTop: "1px solid black"}}><span className="float-right">{props.oddSummary}</span></td></tr>
-                    <tr><td>Total:</td><td colSpan="2"><span className="float-right">{props.total}</span></td></tr>
+                    <tr><td><strong>Total:</strong></td><td colSpan="2"><span className="float-right">{props.total}</span></td></tr>
+                    <tr><td>Ticket Number:</td><td colSpan="2"><span className="float-right">{(Math.random(1)*1000000).toFixed(0)}</span></td></tr>
                 </tbody>
             </table>
         </div>
