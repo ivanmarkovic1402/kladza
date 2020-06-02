@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './tiket.css';
+import Modal from './modal';
 
 
 class Ticket extends Component {
@@ -29,7 +30,8 @@ class Ticket extends Component {
     state = { 
         games: [],
         oddSummary: null,
-        total: 0
+        total: 0,
+        modalShown: false
     }
 
     updateGamesState = () => {
@@ -66,12 +68,9 @@ class Ticket extends Component {
         this.setState({total});
     }
 
-    // resetAll = () => {
-    //     const games = [];
-    //     const oddSummary = null;
-    //     const total = 0;
-    //     this.setState({games, oddSummary, total});
-    // }
+    modalShow = (flag) => {
+        this.setState({modalShown: flag});
+    }
 
 
     render() { 
@@ -109,8 +108,12 @@ class Ticket extends Component {
                             <td colSpan="2"><input type="text" id="bet" name="bet" onChange={(event) => this.placeBet(event)} /></td>        
                             <td className="float-right"><strong>{this.state.total}</strong></td>        
                         </tr>
+                        <tr>
+                            <td colSpan="4"><button onClick={() => this.modalShow(true)} className="float-right btn btn-success btn-lg">Send</button></td>
+                        </tr>
                     </tbody>
                 </table>
+                <Modal modalOpen={this.modalShow} show={this.state.modalShown} gamesOnTicket={this.state.games} oddSummary={this.state.oddSummary} total={this.state.total}/>
             </div>
          );
     }

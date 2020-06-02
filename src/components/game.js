@@ -22,5 +22,3 @@ const Game = props => {
 }
  
 export default Game;
-
-{/* <a href="#" onClick={() => { func1(); func2();}}>Test Link</a> */}
