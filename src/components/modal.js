@@ -42,5 +42,3 @@ const Modal = props =>{
 
 
 export default Modal;       
-//  console.log(gamesOnTicket);
-// console.log(modalShown);
